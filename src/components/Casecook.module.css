@@ -1,0 +1,24 @@
+.wrapper {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+      height: 100vh;
+}
+.header {
+      background-color: rgb(100, 153, 250);
+      grid-area: 1 / 1 / 2 / 13;
+}
+.content {
+      background-color: rgb(80, 133, 250);
+      grid-area: 2 / 2 / 12 / 13;
+}
+.nav {
+      background-color: rgb(60, 113, 250);
+      grid-area: 2 / 1 / 12 / 2;
+}
+.footer {
+      background-color: rgb(40, 103, 250);
+      grid-area: 12 / 1 / 13 / 13;
+}
