@@ -1,25 +1,68 @@
 import { NavLink } from 'react-router-dom'
+import s from './Nav.module.css'
 
 export function Nav() {
       return (
             <div>
                   <div>
-                        <NavLink to={'/profile'}>Profile</NavLink>
+                        <NavLink
+                              className={({ isActive }) =>
+                                    isActive ? s.active : s.navLink
+                              }
+                              to={'/profile'}
+                        >
+                              Profile
+                        </NavLink>
                   </div>
                   <div>
-                        <NavLink to={'/news'}>News</NavLink>
+                        <NavLink
+                              className={({ isActive }) =>
+                                    isActive ? s.active : s.navLink
+                              }
+                              to={'/news'}
+                        >
+                              News
+                        </NavLink>
                   </div>
                   <div>
-                        <NavLink to={'/messenger'}>Messenger</NavLink>
+                        <NavLink
+                              className={({ isActive }) =>
+                                    isActive ? s.active : s.navLink
+                              }
+                              to={'/messenger'}
+                        >
+                              Messenger
+                        </NavLink>
                   </div>
                   <div>
-                        <NavLink to={'/friends'}>Friends</NavLink>
+                        <NavLink
+                              className={({ isActive }) =>
+                                    isActive ? s.active : s.navLink
+                              }
+                              to={'/friends'}
+                        >
+                              Friends
+                        </NavLink>
                   </div>
                   <div>
-                        <NavLink to={'/music'}>Music</NavLink>
+                        <NavLink
+                              className={({ isActive }) =>
+                                    isActive ? s.active : s.navLink
+                              }
+                              to={'/music'}
+                        >
+                              Music
+                        </NavLink>
                   </div>
                   <div>
-                        <NavLink to={'/settings'}>Settings</NavLink>
+                        <NavLink
+                              className={({ isActive }) =>
+                                    isActive ? s.active : s.navLink
+                              }
+                              to={'/settings'}
+                        >
+                              Settings
+                        </NavLink>
                   </div>
             </div>
       )

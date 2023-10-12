@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { Profile } from '../../pages/Profile/Profile'
 import { News } from '../../pages/News/News'
 import { Messenger } from '../../pages/Messenger/Messenger'
@@ -11,7 +11,10 @@ export function Content() {
       return (
             <div>
                   <Routes>
-                        <Route path={'/'} element={<Profile />} />
+                        <Route
+                              path={'/'}
+                              element={<Navigate to={'/profile'} />}
+                        />
 
                         <Route path={'profile'} element={<Profile />} />
                         <Route path={'news'} element={<News />} />
