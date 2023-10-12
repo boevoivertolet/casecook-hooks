@@ -5,62 +5,32 @@ export function Nav() {
       return (
             <div>
                   <div>
-                        <NavLink
-                              className={({ isActive }) =>
-                                    isActive ? s.active : s.navLink
-                              }
-                              to={'/profile'}
-                        >
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/profile'}>
                               Profile
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink
-                              className={({ isActive }) =>
-                                    isActive ? s.active : s.navLink
-                              }
-                              to={'/news'}
-                        >
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/news'}>
                               News
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink
-                              className={({ isActive }) =>
-                                    isActive ? s.active : s.navLink
-                              }
-                              to={'/messenger'}
-                        >
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/messenger'}>
                               Messenger
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink
-                              className={({ isActive }) =>
-                                    isActive ? s.active : s.navLink
-                              }
-                              to={'/friends'}
-                        >
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/friends'}>
                               Friends
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink
-                              className={({ isActive }) =>
-                                    isActive ? s.active : s.navLink
-                              }
-                              to={'/music'}
-                        >
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/music'}>
                               Music
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink
-                              className={({ isActive }) =>
-                                    isActive ? s.active : s.navLink
-                              }
-                              to={'/settings'}
-                        >
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/settings'}>
                               Settings
                         </NavLink>
                   </div>
