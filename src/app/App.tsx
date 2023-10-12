@@ -1,8 +1,8 @@
-import { Casecook } from '../components/Casecook'
+import { Casecook } from './Casecook'
 
 function App() {
       return (
-            <div className='App'>
+            <div>
                   <Casecook />
             </div>
       )
