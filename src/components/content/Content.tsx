@@ -1,27 +1,25 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Profile } from '../../pages/Profile/Profile'
-import { News } from '../../pages/News/News'
-import { Messenger } from '../../pages/Messenger/Messenger'
-import { Friends } from '../../pages/Friends/Friends'
-import { Music } from '../../pages/Music/Music'
-import { Settings } from '../../pages/Settings/Settings'
+
 import { Error404 } from '../../pages/ErrorPage/Error404'
+import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
+import { NewsPage } from '../../pages/NewsPage/NewsPage'
+import { MessengerPage } from '../../pages/MessengerPage/MessengerPage'
+import { FriendsPage } from '../../pages/FriendsPage/FriendsPage'
+import { MusicPage } from '../../pages/MusicPage/MusicPage'
+import { SettingsPage } from '../../pages/SettingsPage/SettingsPage'
 
 export function Content() {
       return (
             <div>
                   <Routes>
-                        <Route
-                              path={'/'}
-                              element={<Navigate to={'/profile'} />}
-                        />
+                        <Route path={'/'} element={<Navigate to={'/profilePage'} />} />
 
-                        <Route path={'profile'} element={<Profile />} />
-                        <Route path={'news'} element={<News />} />
-                        <Route path={'/messenger'} element={<Messenger />} />
-                        <Route path={'/friends'} element={<Friends />} />
-                        <Route path={'/music'} element={<Music />} />
-                        <Route path={'/settings'} element={<Settings />} />
+                        <Route path={'profilePage'} element={<ProfilePage />} />
+                        <Route path={'newsPage'} element={<NewsPage />} />
+                        <Route path={'/messengerPage'} element={<MessengerPage />} />
+                        <Route path={'/friendsPage'} element={<FriendsPage />} />
+                        <Route path={'/musicPage'} element={<MusicPage />} />
+                        <Route path={'/settingsPage'} element={<SettingsPage />} />
 
                         <Route path={'/*'} element={<Error404 />} />
                   </Routes>

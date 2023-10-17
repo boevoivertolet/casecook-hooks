@@ -5,32 +5,32 @@ export function Nav() {
       return (
             <div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/profile'}>
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/profilePage'}>
                               Profile
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/news'}>
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/newsPage'}>
                               News
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/messenger'}>
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/messengerPage'}>
                               Messenger
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/friends'}>
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/friendsPage'}>
                               Friends
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/music'}>
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/musicPage'}>
                               Music
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/settings'}>
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/settingsPage'}>
                               Settings
                         </NavLink>
                   </div>
