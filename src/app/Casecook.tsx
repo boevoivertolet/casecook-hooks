@@ -1,6 +1,7 @@
 import { Content } from '../components/content/Content'
 import { Nav } from '../components/nav/Nav'
 import s from './Casecook.module.css'
+
 export function Casecook() {
       return (
             <div className={s.wrapper}>

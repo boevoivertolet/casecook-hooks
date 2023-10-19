@@ -1,11 +1,14 @@
-import { IUser } from '../profilePageReducer'
+import { IUserProfile } from '../profilePageReducer'
+import AltPhoto from '../../../image/alt-photo.png'
 
 export const UserProfile: React.FC<UserProfileType> = (props) => {
       const { userProfile, status, ...restProps } = props
+
+      const userPhoto = userProfile?.photos.large ? userProfile?.photos.large : AltPhoto
       return (
             <div>
                   <div>
-                        <img src='#' alt='photos' />
+                        <img style={{ width: '150px', height: '150px' }} src={userPhoto} alt='userPhoto' />
                   </div>
                   <div>{userProfile?.fullName}</div>
                   <div>{status}</div>
@@ -28,6 +31,6 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
 }
 
 type UserProfileType = {
-      userProfile: IUser | null
+      userProfile: IUserProfile | null
       status: string
 }

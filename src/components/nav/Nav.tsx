@@ -20,8 +20,8 @@ export function Nav() {
                         </NavLink>
                   </div>
                   <div>
-                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/friendsPage'}>
-                              Friends
+                        <NavLink className={({ isActive }) => (isActive ? s.active : s.navLink)} to={'/usersPage'}>
+                              Users
                         </NavLink>
                   </div>
                   <div>

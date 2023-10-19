@@ -1,12 +1,13 @@
-import { AddPostForm } from './Profile/AddPostForm'
-import { UserProfile } from './Profile/Profile'
-import { ProfilePosts } from './Profile/ProfilePosts'
 import { useAppDispatch, useAppSelector } from '../../app/store'
-import { IUser, getStatusProfile, getUserProfile } from './profilePageReducer'
+import { AddPostForm } from './UserProfile/AddPostForm'
+import { UserProfile } from './UserProfile/UserProfile'
+import { UserProfilePosts } from './UserProfile/UserProfilePosts'
+import { IUserProfile, getStatusProfile, getUserProfile } from './profilePageReducer'
 import { useEffect } from 'react'
 
 export const ProfilePage = () => {
       const profilePage = useAppSelector<ProfilePageType>((state) => state.profilePage)
+
       const dispatch = useAppDispatch()
 
       useEffect(() => {
@@ -23,13 +24,13 @@ export const ProfilePage = () => {
                         <AddPostForm />
                   </div>
                   <div>
-                        <ProfilePosts />
+                        <UserProfilePosts />
                   </div>
             </div>
       )
 }
 
 type ProfilePageType = {
-      userProfile: IUser | null
+      userProfile: IUserProfile | null
       status: string
 }

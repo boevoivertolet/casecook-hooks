@@ -1,15 +1,15 @@
 import { Dispatch } from 'redux'
 import { profileAPI } from '../../api/api'
 
-let initialState: InitialProfileType = {
+let initialState: InitialProfilePageType = {
       userProfile: null,
       status: '',
 }
 
 export const profilePageReducer = (
-      state: InitialProfileType = initialState,
-      action: ProfileActionType
-): InitialProfileType => {
+      state: InitialProfilePageType = initialState,
+      action: ProfilePageActionType
+): InitialProfilePageType => {
       switch (action.type) {
             case 'samurai-network/profile/SET-USER-PROFILE':
                   return {
@@ -27,7 +27,7 @@ export const profilePageReducer = (
 }
 // Action Creators
 
-const setUserProfile = (userProfile: IUser) =>
+const setUserProfile = (userProfile: IUserProfile) =>
       ({ type: 'samurai-network/profile/SET-USER-PROFILE', userProfile } as const) //Action Create
 const setStatusProfile = (status: string) => ({ type: 'samurai-network/profile/SET-STATUS', status } as const) //Action Create
 
@@ -62,7 +62,7 @@ export const updateStatusProfile = (status: string) => (dispatch: Dispatch) => {
             }
       })
 }
-export interface IUser {
+export interface IUserProfile {
       aboutMe: string
       contacts: {
             facebook: string
@@ -84,9 +84,9 @@ export interface IUser {
       }
 }
 
-export type InitialProfileType = {
-      userProfile: IUser | null
+export type InitialProfilePageType = {
+      userProfile: IUserProfile | null
       status: string
 }
 
-export type ProfileActionType = ReturnType<typeof setUserProfile> | ReturnType<typeof setStatusProfile>
+export type ProfilePageActionType = ReturnType<typeof setUserProfile> | ReturnType<typeof setStatusProfile>
