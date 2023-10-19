@@ -11,8 +11,8 @@ export const ProfilePage = () => {
       const dispatch = useAppDispatch()
 
       useEffect(() => {
-            dispatch(getUserProfile(24563))
-            dispatch(getStatusProfile(24563))
+            dispatch(getUserProfile(24563)) //  hard code
+            dispatch(getStatusProfile(24563)) // hard code
       }, [])
 
       return (

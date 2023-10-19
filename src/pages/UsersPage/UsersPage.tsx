@@ -1,14 +1,31 @@
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../../app/store'
 import { UserCard } from './UserCard/UserCard'
+import { UserItemType, requestUsers } from './usersPageReducer'
 
 export function UsersPage() {
-      const userArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      const usersPage = useAppSelector<UsersPageType>((state) => state.usersPage)
+      const dispatch = useAppDispatch()
+      useEffect(() => {
+            dispatch(requestUsers(1, 10)) //hard code
+      }, [])
+
       return (
             <div>
                   <div>
-                        {userArr.map((user) => (
-                              <UserCard />
+                        {usersPage.items.map((user) => (
+                              <UserCard userCard={user} />
                         ))}
                   </div>
             </div>
       )
+}
+
+type UsersPageType = {
+      items: UserItemType[]
+      totalCount: number
+      error: string | null
+      pageSize: number
+      currentPage: number
+      followingInProgress: Array<string>
 }

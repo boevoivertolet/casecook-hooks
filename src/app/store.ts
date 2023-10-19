@@ -1,3 +1,4 @@
+import { usersPageReducer } from '../pages/UsersPage/usersPageReducer'
 import { AnyAction, applyMiddleware, combineReducers, legacy_createStore as createStore } from 'redux'
 import thunk, { ThunkDispatch } from 'redux-thunk'
 import { profilePageReducer } from '../pages/ProfilePage/profilePageReducer'
@@ -6,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 const rootReducer = combineReducers({
       profilePage: profilePageReducer,
+      usersPage: usersPageReducer,
 })
 export const useAppSelector: TypedUseSelectorHook<RootStateType> = useSelector
 export type ThunkAppDispatchType = ThunkDispatch<RootStateType, any, AnyAction>
