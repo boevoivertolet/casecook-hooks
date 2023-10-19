@@ -5,7 +5,7 @@ let initialState: InitialUsersPageType = {
       items: [],
       totalCount: 100,
       error: null,
-      pageSize: 100,
+      pageSize: 10,
       currentPage: 1,
       followingInProgress: [],
 }
