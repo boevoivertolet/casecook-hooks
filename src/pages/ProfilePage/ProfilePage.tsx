@@ -5,16 +5,20 @@ import { UserProfile } from './UserProfile/UserProfile'
 import { UserProfilePosts } from './UserProfile/UserProfilePosts'
 import { IUserProfile, getStatusProfile, getUserProfile } from './profilePageReducer'
 import { useEffect } from 'react'
+import { AuthUserType } from '../../app/authReducer'
 
 export const ProfilePage = () => {
       const profilePage = useAppSelector<ProfilePageType>((state) => state.profilePage)
+      const userId = useAppSelector<number| null>(state => state.auth.data.id)
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
 
       useEffect(() => {
-            dispatch(getUserProfile(24563)) //  hard code
-            dispatch(getStatusProfile(24563)) // hard code
-      }, [])
+         if(userId){
+               dispatch(getUserProfile(userId)) //  hard code
+               dispatch(getStatusProfile(userId)) // hard code
+         }
+      }, [userId])
 
       if (!isAuth) return <Navigate to={'/loginPage'} />
 
