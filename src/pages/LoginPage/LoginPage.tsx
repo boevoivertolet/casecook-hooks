@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { useAppSelector } from '../../app/store'
+import { LoginForm } from '../../components/LoginForm'
 
 export const LoginPage = () => {
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
@@ -16,19 +17,7 @@ export const LoginPage = () => {
                         background: 'rgb(80, 133, 250)',
                   }}
             >
-                  <form>
-                        <div>
-                              <input type='text' />
-                        </div>
-                        <div>
-                              <input type='password' />
-                        </div>
-                        <div>
-                              <input type='checkbox' />
-                              remember me
-                        </div>
-                        <button>login</button>
-                  </form>
+           <LoginForm/>
             </div>
       )
 }

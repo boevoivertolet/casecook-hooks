@@ -5,7 +5,6 @@ import { UserProfile } from './UserProfile/UserProfile'
 import { UserProfilePosts } from './UserProfile/UserProfilePosts'
 import { IUserProfile, getStatusProfile, getUserProfile } from './profilePageReducer'
 import { useEffect } from 'react'
-import { AuthUserType } from '../../app/authReducer'
 
 export const ProfilePage = () => {
       const profilePage = useAppSelector<ProfilePageType>((state) => state.profilePage)

@@ -12,17 +12,15 @@ export function UsersPage() {
       const pageNumber = usersPage.totalCount // номер страницы
 
       useEffect(() => {
-            dispatch(requestUsers(2, 10)) //hard code
+            dispatch(requestUsers(1, 10)) //hard code
       }, [])
 
       if (!isAuth) return <Navigate to={'/loginPage'} />
       return (
             <div>
-                  <div>
-                        {usersPage.items.map((user) => (
-                              <UserCard key={user.id} user={user} />
-                        ))}
-                  </div>
+                  {usersPage.items.map((user) => (
+                        <UserCard key={user.id} user={user} />
+                  ))}
             </div>
       )
 }
