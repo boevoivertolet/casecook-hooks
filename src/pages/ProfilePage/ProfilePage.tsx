@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/store'
 import { AddPostForm } from './UserProfile/AddPostForm'
 import { UserProfile } from './UserProfile/UserProfile'
@@ -9,14 +9,14 @@ import { AuthUserType } from '../../app/authReducer'
 
 export const ProfilePage = () => {
       const profilePage = useAppSelector<ProfilePageType>((state) => state.profilePage)
-      const userId = useAppSelector<number | null>((state) => state.auth.data.id)
+      const { userId } = useParams()
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
 
       useEffect(() => {
             if (userId) {
-                  dispatch(getUserProfile(userId)) //  hard code
-                  dispatch(getStatusProfile(userId)) // hard code
+                  dispatch(getUserProfile(Number(userId))) //  hard code
+                  dispatch(getStatusProfile(Number(userId))) // hard code
             }
       }, [userId])
 

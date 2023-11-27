@@ -1,8 +1,13 @@
 .navLink {
-      text-decoration: none;
-      color: darkslategray;
+    text-decoration: none;
+    color: darkslategray;
 }
-.active {
-      text-decoration: underline;
-      color: bisque;
+
+.navLink:hover {
+    background: #7bc8fe;
 }
+
+/*.active {*/
+/*      text-decoration: underline;*/
+/*      color: bisque;*/
+/*}*/

@@ -1,10 +1,11 @@
 import { IUserProfile, updateStatusProfile } from '../profilePageReducer'
 import AltPhoto from '../../../image/alt-photo.png'
 import { ChangeEvent, useEffect, useState } from 'react'
-import { useAppDispatch } from '../../../app/store'
+import { useAppDispatch, useAppSelector } from '../../../app/store'
 
 export const UserProfile: React.FC<UserProfileType> = (props) => {
       const dispatch = useAppDispatch()
+      const id = useAppSelector<number | null>((state) => state.auth.data.id)
       const { userProfile, status, changeButtonVue, ...restProps } = props
       const [userStatus, setUserStatus] = useState<string>('')
       const [editMode, setEditMode] = useState<boolean>(false)
@@ -41,7 +42,7 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
                         ) : (
                               <div>status: {userStatus}</div>
                         )}
-                        {changeButtonVue && (
+                        {userProfile?.userId === id && (
                               <button
                                     onClick={() => {
                                           setEditMode(true)

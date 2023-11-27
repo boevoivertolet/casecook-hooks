@@ -12,7 +12,7 @@ export const UserCard: React.FC<UserCardType> = ({ user }) => {
                               alt='userPhoto'
                         />
                   </div>
-                  <NavLink to={`/userPage/${user.id}`}>
+                  <NavLink to={`/profilePage/${user.id}`}>
                         <div>{user.name}</div>
                   </NavLink>
                   <div>{user.status ? user.status : ' статус не указан'}</div>
