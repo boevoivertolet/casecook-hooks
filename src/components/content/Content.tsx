@@ -9,6 +9,7 @@ import { MusicPage } from '../../pages/MusicPage/MusicPage'
 import { SettingsPage } from '../../pages/SettingsPage/SettingsPage'
 import { UsersPage } from '../../pages/UsersPage/UsersPage'
 import { LoginPage } from '../../pages/LoginPage/LoginPage'
+import { UserPage } from '../../pages/UserPage/UserPage'
 
 export function Content() {
       return (
@@ -17,6 +18,7 @@ export function Content() {
                         <Route path={'/'} element={<Navigate to={'/profilePage'} />} />
 
                         <Route path={'/profilePage'} element={<ProfilePage />} />
+                        <Route path={'/userPage/:userId'} element={<UserPage />} />
                         <Route path={'/loginPage'} element={<LoginPage />} />
                         <Route path={'/newsPage'} element={<NewsPage />} />
                         <Route path={'/messengerPage'} element={<MessengerPage />} />

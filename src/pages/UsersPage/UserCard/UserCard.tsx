@@ -1,5 +1,6 @@
 import { UserItemType } from '../usersPageReducer'
 import userPhoto from '../../../image/alt-photo.png'
+import { NavLink } from 'react-router-dom'
 
 export const UserCard: React.FC<UserCardType> = ({ user }) => {
       return (
@@ -11,7 +12,9 @@ export const UserCard: React.FC<UserCardType> = ({ user }) => {
                               alt='userPhoto'
                         />
                   </div>
-                  <div>{user.name}</div>
+                  <NavLink to={`/userPage/${user.id}`}>
+                        <div>{user.name}</div>
+                  </NavLink>
                   <div>{user.status ? user.status : ' статус не указан'}</div>
                   <div>{user.followed ? 'подписан' : 'не подписан'}</div>
             </div>

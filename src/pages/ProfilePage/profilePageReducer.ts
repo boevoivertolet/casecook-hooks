@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux'
 import { profileAPI } from '../../api/api'
+import { setIsFetchingAC } from '../../app/appReducer'
 
 let initialState: InitialProfilePageType = {
       userProfile: null,
@@ -34,16 +35,16 @@ const setStatusProfile = (status: string) => ({ type: 'samurai-network/profile/S
 // Thunk Creators
 
 export const getUserProfile = (userId: number) => (dispatch: Dispatch) => {
-      //   dispatch(setIsFetchingAC(true))
+      dispatch(setIsFetchingAC(true))
       profileAPI.getProfile(userId).then((data) => {
-            // dispatch(setIsFetchingAC(false))
+            dispatch(setIsFetchingAC(false))
             dispatch(setUserProfile(data))
       })
 }
 export const getStatusProfile = (userId: number) => (dispatch: Dispatch) => {
-      //   dispatch(setIsFetchingAC(true))
+      dispatch(setIsFetchingAC(true))
       profileAPI.getStatus(userId).then((status) => {
-            // dispatch(setIsFetchingAC(false))
+            dispatch(setIsFetchingAC(false))
             if (status === null) {
                   dispatch(setStatusProfile('no status'))
             } else {
@@ -52,16 +53,17 @@ export const getStatusProfile = (userId: number) => (dispatch: Dispatch) => {
       })
 }
 export const updateStatusProfile = (status: string) => (dispatch: Dispatch) => {
-      //   dispatch(setIsFetchingAC(true))
+      dispatch(setIsFetchingAC(true))
 
       profileAPI.updateStatus(status).then((res) => {
-            // dispatch(setIsFetchingAC(false))
+            dispatch(setIsFetchingAC(false))
 
             if (res.resultCode === 0) {
                   dispatch(setStatusProfile(status))
             }
       })
 }
+
 export interface IUserProfile {
       aboutMe: string
       contacts: {

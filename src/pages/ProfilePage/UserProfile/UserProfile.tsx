@@ -1,8 +1,23 @@
-import { IUserProfile } from '../profilePageReducer'
+import { IUserProfile, updateStatusProfile } from '../profilePageReducer'
 import AltPhoto from '../../../image/alt-photo.png'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { useAppDispatch } from '../../../app/store'
 
 export const UserProfile: React.FC<UserProfileType> = (props) => {
-      const { userProfile, status, ...restProps } = props
+      const dispatch = useAppDispatch()
+      const { userProfile, status, changeButtonVue, ...restProps } = props
+      const [userStatus, setUserStatus] = useState<string>('')
+      const [editMode, setEditMode] = useState<boolean>(false)
+
+      useEffect(() => {
+            if (status) {
+                  setUserStatus(status)
+            }
+      }, [status])
+
+      const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+            setUserStatus(e.currentTarget.value)
+      }
 
       const userPhoto = userProfile?.photos.large ? userProfile?.photos.large : AltPhoto
       return (
@@ -11,7 +26,31 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
                         <img style={{ width: '150px', height: '150px' }} src={userPhoto} alt='userPhoto' />
                   </div>
                   <div>{userProfile?.fullName}</div>
-                  <div>{status}</div>
+                  <div>
+                        {editMode ? (
+                              <input
+                                    onChange={onChangeHandler}
+                                    autoFocus
+                                    onBlur={() => {
+                                          setEditMode(false)
+                                          dispatch(updateStatusProfile(userStatus))
+                                    }}
+                                    value={userStatus}
+                                    type='text'
+                              />
+                        ) : (
+                              <div>status: {userStatus}</div>
+                        )}
+                        {changeButtonVue && (
+                              <button
+                                    onClick={() => {
+                                          setEditMode(true)
+                                    }}
+                              >
+                                    change
+                              </button>
+                        )}
+                  </div>
                   <div>{userProfile?.lookingForAJob}</div>
                   <div>{userProfile?.lookingForAJobDescription}</div>
                   <div>
@@ -33,4 +72,5 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
 type UserProfileType = {
       userProfile: IUserProfile | null
       status: string
+      changeButtonVue?: boolean
 }
