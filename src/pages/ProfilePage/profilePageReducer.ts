@@ -28,8 +28,8 @@ export const profilePageReducer = (
 // Action Creators
 
 const setUserProfile = (userProfile: IUserProfile) =>
-      ({ type: 'samurai-network/profile/SET-USER-PROFILE', userProfile } as const) //Action Create
-const setStatusProfile = (status: string) => ({ type: 'samurai-network/profile/SET-STATUS', status } as const) //Action Create
+      ({ type: 'samurai-network/profile/SET-USER-PROFILE', userProfile }) as const //Action Create
+const setStatusProfile = (status: string) => ({ type: 'samurai-network/profile/SET-STATUS', status }) as const //Action Create
 
 // Thunk Creators
 

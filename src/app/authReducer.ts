@@ -36,7 +36,7 @@ const setAuthUserDataAC = (id: number | null, email: string | null, login: strin
       ({
             type: 'samurai-network/auth/SET-USER-DATA',
             payload: { id, email, login, isAuth },
-      } as const) //Action Create
+      }) as const //Action Create
 
 // Thunk Creators
 

@@ -24,8 +24,8 @@ export const appReducer = (state: InitialAppStateType = initialState, action: Ap
 // Action Creators
 
 export const setIsFetchingAC = (isFetching: boolean) =>
-      ({ type: 'samurai-network/app/SET-IS-FETCHING', isFetching } as const) //Action Create
-export const setInitializedAC = () => ({ type: 'samurai-network/app/SET-INITIALIZED' } as const) //Action Create
+      ({ type: 'samurai-network/app/SET-IS-FETCHING', isFetching }) as const //Action Create
+export const setInitializedAC = () => ({ type: 'samurai-network/app/SET-INITIALIZED' }) as const //Action Create
 
 //Thunks
 

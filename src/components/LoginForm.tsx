@@ -1,19 +1,28 @@
-import 'react-app-polyfill/ie11';
-import * as React from 'react';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
+import 'react-app-polyfill/ie11'
+import * as React from 'react'
+import { Formik, Field, Form, FormikHelpers } from 'formik'
 import { login } from '../app/authReducer'
 import { useAppDispatch } from '../app/store'
+import { validation } from '../utils/validation'
+import s from '../pages/LoginPage/LoginPage.module.css'
 
 interface Values {
-      email: string;
-      password: string;
-      rememberMe: boolean;
+      email: string
+      password: string
+      rememberMe: boolean
 }
 
 export const LoginForm = () => {
       const dispatch = useAppDispatch()
       return (
-            <div>
+            <div
+                  style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                  }}
+            >
                   <h1>Login</h1>
                   <Formik
                         initialValues={{
@@ -21,41 +30,51 @@ export const LoginForm = () => {
                               password: '',
                               rememberMe: false,
                         }}
-                        onSubmit={(
-                              values: Values,
-                              { setSubmitting }: FormikHelpers<Values>
-                        ) => {
+                        onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
                               console.log(values)
 
                               setTimeout(() => {
-                                   dispatch( login(values))
-                                    setSubmitting(false);
-
-
-                              }, 500);
+                                    dispatch(login(values))
+                                    setSubmitting(false)
+                              }, 500)
                         }}
                   >
-                        <Form>
-                              <label htmlFor="email">Email</label>
-                              <Field type={'email'} id="email" name="email" placeholder="email" />
+                        {({ errors, touched }) => (
+                              <Form className={s.form}>
+                                    <label htmlFor='email'>
+                                          Email:
+                                          <Field
+                                                type={'email'}
+                                                id='email'
+                                                name='email'
+                                                validate={validation.validateEmail}
+                                          />
+                                          {errors.email && touched.email && <div>{errors.email}</div>}
+                                    </label>
 
-                              <label htmlFor="password">Password</label>
-                              <Field type={'password'} id="password" name="password" placeholder="password" />
+                                    <label htmlFor='password'>
+                                          Password:
+                                          <Field
+                                                type={'password'}
+                                                id='password'
+                                                name='password'
+                                                validate={validation.validatePass}
+                                          />
+                                          {errors.password && touched.password && <div>{errors.password}</div>}
+                                    </label>
 
-                              <label htmlFor="rememberMe">Remember me</label>
-                              <Field
-                                    id="rememberMe"
-                                    name="rememberMe"
-                                    type="checkbox"
-                              />
+                                    <label htmlFor='rememberMe'>
+                                          Remember me
+                                          <Field id='rememberMe' name='rememberMe' type='checkbox' />
+                                    </label>
 
-                              <button type="submit">Submit</button>
-                        </Form>
+                                    <button type='submit'>Submit</button>
+                              </Form>
+                        )}
                   </Formik>
             </div>
-      );
-};
-
+      )
+}
 
 export type LoginFormDataType = {
       email: string

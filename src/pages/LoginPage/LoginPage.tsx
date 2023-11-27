@@ -15,9 +15,12 @@ export const LoginPage = () => {
                         width: '100%',
                         height: '100%',
                         background: 'rgb(80, 133, 250)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                   }}
             >
-           <LoginForm/>
+                  <LoginForm />
             </div>
       )
 }
