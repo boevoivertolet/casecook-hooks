@@ -3,9 +3,8 @@ import { useAppDispatch, useAppSelector } from '../../app/store'
 import { AddPostForm } from './UserProfile/AddPostForm'
 import { UserProfile } from './UserProfile/UserProfile'
 import { UserProfilePosts } from './UserProfile/UserProfilePosts'
-import { IUserProfile, getStatusProfile, getUserProfile } from './profilePageReducer'
+import { getStatusProfile, getUserProfile, IUserProfile } from './profilePageReducer'
 import { useEffect } from 'react'
-import { AuthUserType } from '../../app/authReducer'
 
 export const ProfilePage = () => {
       const profilePage = useAppSelector<ProfilePageType>((state) => state.profilePage)

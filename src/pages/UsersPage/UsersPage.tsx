@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/store'
 import { UserCard } from './UserCard/UserCard'
 import { UserItemType, requestUsers } from './usersPageReducer'
@@ -9,11 +9,11 @@ export function UsersPage() {
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
       const pageSize = usersPage.pageSize // кол-во юзеров отображаемых на странице
-      const pageNumber = usersPage.totalCount // номер страницы
+      const pageNumber = usersPage.currentPage // номер страницы
 
       useEffect(() => {
-            dispatch(requestUsers(1, 10)) //hard code
-      }, [])
+            dispatch(requestUsers(pageNumber, pageSize)) //hard code
+      }, [pageNumber, pageSize])
 
       if (!isAuth) return <Navigate to={'/loginPage'} />
       return (

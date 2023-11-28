@@ -54,10 +54,8 @@ export const getStatusProfile = (userId: number) => (dispatch: Dispatch) => {
 }
 export const updateStatusProfile = (status: string) => (dispatch: Dispatch) => {
       dispatch(setIsFetchingAC(true))
-
       profileAPI.updateStatus(status).then((res) => {
             dispatch(setIsFetchingAC(false))
-
             if (res.resultCode === 0) {
                   dispatch(setStatusProfile(status))
             }

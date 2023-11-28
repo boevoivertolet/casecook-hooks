@@ -1,12 +1,13 @@
 import { Dispatch } from 'redux'
 import { usersAPI } from '../../api/api'
+import { setIsFetchingAC } from '../../app/appReducer'
 
 let initialState: InitialUsersPageType = {
       items: [],
       totalCount: 100,
       error: null,
-      pageSize: 10,
-      currentPage: 1,
+      pageSize: 100,
+      currentPage: 254,
       followingInProgress: [],
 }
 
@@ -72,9 +73,9 @@ export const setIsFollowingProgress = (isFetching: boolean, userId: string) =>
 
 export const requestUsers = (page: number, pageSize: number) => {
       return (dispatch: Dispatch) => {
-            // dispatch(setIsFetchingAC(true))
+            dispatch(setIsFetchingAC(true))
             usersAPI.getUsers(page, pageSize).then((data) => {
-                  // dispatch(setIsFetchingAC(false))
+                  dispatch(setIsFetchingAC(false))
                   dispatch(setUsers(data.items))
                   dispatch(setTotalUsersCount(data.totalCount))
             })
@@ -82,23 +83,23 @@ export const requestUsers = (page: number, pageSize: number) => {
 }
 export const follow = (userId: string) => {
       return (dispatch: Dispatch) => {
-            // dispatch(setIsFetchingAC(true))
+            dispatch(setIsFetchingAC(true))
             usersAPI.postFollow(userId).then((data) => {
                   if (data.resultCode === 0) {
                         dispatch(acceptFollow(userId))
                   }
-                  // dispatch(setIsFetchingAC(false))
+                  dispatch(setIsFetchingAC(false))
             })
       }
 }
 export const unFollow = (userId: string) => {
       return (dispatch: Dispatch) => {
-            // dispatch(setIsFetchingAC(true))
+            dispatch(setIsFetchingAC(true))
             usersAPI.deleteFollow(userId).then((data) => {
                   if (data.resultCode === 0) {
                         dispatch(acceptUnfollow(userId))
                   }
-                  // dispatch(setIsFetchingAC(false))
+                  dispatch(setIsFetchingAC(false))
             })
       }
 }

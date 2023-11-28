@@ -16,6 +16,7 @@ export function Content() {
       return (
             <div>
                   <Routes>
+                        <Route path={'/'} element={<Navigate to={`/profilePage`} />} />
                         <Route path={'/:id'} element={<Navigate to={`/profilePage/${userId}`} />} />
 
                         <Route path={`/profilePage/:userId`} element={<ProfilePage />} />
