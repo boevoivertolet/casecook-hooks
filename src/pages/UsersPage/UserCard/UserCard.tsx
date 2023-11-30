@@ -7,6 +7,7 @@ import { FC } from 'react'
 export const UserCard: FC<UserCardType> = ({ user }) => {
       const dispatch = useAppDispatch()
       const isFetching = useAppSelector<boolean>((state) => state.app.isFetching)
+
       return (
             <div style={{ margin: '20px' }}>
                   <NavLink to={`/profilePage/${user.id}`}>

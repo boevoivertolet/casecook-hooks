@@ -1,8 +1,10 @@
 import { getAuthUserData } from './authReducer'
 import { Dispatch } from 'redux'
+
 let initialState: InitialAppStateType = {
       isFetching: false,
       initialized: false,
+      modalLogout: false,
 }
 
 export const appReducer = (state: InitialAppStateType = initialState, action: AppActionType): InitialAppStateType => {
@@ -17,6 +19,11 @@ export const appReducer = (state: InitialAppStateType = initialState, action: Ap
                         ...state,
                         initialized: true,
                   }
+            case 'samurai-network/app/SET-MODALLOGOUT':
+                  return {
+                        ...state,
+                        modalLogout: !state.modalLogout,
+                  }
             default:
                   return state
       }
@@ -26,6 +33,7 @@ export const appReducer = (state: InitialAppStateType = initialState, action: Ap
 export const setIsFetchingAC = (isFetching: boolean) =>
       ({ type: 'samurai-network/app/SET-IS-FETCHING', isFetching }) as const //Action Create
 export const setInitializedAC = () => ({ type: 'samurai-network/app/SET-INITIALIZED' }) as const //Action Create
+export const setModalLogoutAC = () => ({ type: 'samurai-network/app/SET-MODALLOGOUT' }) as const //Action Create
 
 //Thunks
 
@@ -43,8 +51,10 @@ export const initializeApp = () => (dispatch: Dispatch<any>) => {
 type InitialAppStateType = {
       isFetching: boolean
       initialized: boolean
+      modalLogout: boolean
 }
 
 type SetIsFetchingACType = ReturnType<typeof setIsFetchingAC>
 type SetInitializedACType = ReturnType<typeof setInitializedAC>
-export type AppActionType = SetIsFetchingACType | SetInitializedACType
+type SetModalLogoutACType = ReturnType<typeof setModalLogoutAC>
+export type AppActionType = SetIsFetchingACType | SetInitializedACType | SetModalLogoutACType

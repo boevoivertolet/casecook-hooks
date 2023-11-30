@@ -75,9 +75,9 @@ export const requestUsers = (page: number, pageSize: number) => {
       return (dispatch: Dispatch) => {
             dispatch(setIsFetchingAC(true))
             usersAPI.getUsers(page, pageSize).then((data) => {
-                  dispatch(setIsFetchingAC(false))
                   dispatch(setUsers(data.items))
                   dispatch(setTotalUsersCount(data.totalCount))
+                  dispatch(setIsFetchingAC(false))
             })
       }
 }

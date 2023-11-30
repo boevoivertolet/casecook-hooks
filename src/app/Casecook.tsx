@@ -3,13 +3,14 @@ import { Content } from '../components/content/Content'
 import { Nav } from '../components/nav/Nav'
 import s from './Casecook.module.css'
 
-import { useAppDispatch } from './store'
-import { initializeApp } from './appReducer'
+import { useAppDispatch, useAppSelector } from './store'
+import { initializeApp, setModalLogoutAC } from './appReducer'
 import { logout } from './authReducer'
+import { ModalLogout } from '../components/ModalLogout'
 
 export function Casecook() {
       const dispatch = useAppDispatch()
-      const onClickHandle = () => dispatch(logout())
+
       useEffect(() => {
             dispatch(initializeApp())
       }, [])
@@ -17,7 +18,7 @@ export function Casecook() {
       return (
             <div className={s.wrapper}>
                   <header className={s.header}>
-                        <button onClick={onClickHandle}>logout</button>
+                        <ModalLogout />
                   </header>
                   <section className={s.content}>
                         <Content />

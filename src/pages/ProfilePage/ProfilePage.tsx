@@ -11,6 +11,7 @@ export const ProfilePage = () => {
       const { userId } = useParams()
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
+      const isFetching = useAppSelector<boolean>((state) => state.app.isFetching)
 
       useEffect(() => {
             if (userId) {
@@ -24,11 +25,15 @@ export const ProfilePage = () => {
       return (
             <div>
                   <div>
-                        <UserProfile
-                              changeButtonVue
-                              userProfile={profilePage.userProfile}
-                              status={profilePage.status}
-                        />
+                        {isFetching ? (
+                              <h1>Loading...</h1>
+                        ) : (
+                              <UserProfile
+                                    changeButtonVue
+                                    userProfile={profilePage.userProfile}
+                                    status={profilePage.status}
+                              />
+                        )}
                   </div>
                   <div>
                         <AddPostForm />

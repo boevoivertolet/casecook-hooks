@@ -12,7 +12,7 @@ export function UsersPage() {
       const pageNumber = usersPage.currentPage // номер страницы
 
       useEffect(() => {
-            dispatch(requestUsers(pageNumber, pageSize)) //hard code
+            dispatch(requestUsers(pageNumber, pageSize))
       }, [pageNumber, pageSize])
 
       if (!isAuth) return <Navigate to={'/loginPage'} />
