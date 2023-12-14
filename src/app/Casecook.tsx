@@ -26,7 +26,7 @@ export function Casecook() {
                   <nav className={s.nav}>
                         <Nav />
                   </nav>
-                  <footer className={s.footer}>footer</footer>
+                  <footer className={s.footer}></footer>
             </div>
       )
 }

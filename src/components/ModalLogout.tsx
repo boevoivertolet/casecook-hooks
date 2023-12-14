@@ -38,7 +38,9 @@ export const ModalLogout = () => {
                               </div>
                         </div>
                   )}
-                  <button onClick={onClickModalHandle}>logout</button>
+                  <button disabled={modal} onClick={onClickModalHandle}>
+                        logout
+                  </button>
             </div>
       )
 }
