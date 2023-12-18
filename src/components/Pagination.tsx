@@ -17,17 +17,18 @@ export const Pagination: FC<PaginationType> = ({ usersPage }) => {
 
       return (
             <StyledPagination>
-                  {currentPage !== 1 && (
-                        <StyledPage
-                              $active={false}
-                              onClick={() => {
-                                    dispatch(setCurrentPage(currentPage - 1))
-                              }}
-                        >
-                              {currentPage - 1}
-                        </StyledPage>
-                  )}
-                  {pages.slice(currentPage - 1, currentPage + 4).map((pn) => (
+                  <StyledPrevNextButtonPage
+                        $active={false}
+                        disabled={currentPage === 1}
+                        $visibility={currentPage > 1}
+                        onClick={() => {
+                              dispatch(setCurrentPage(currentPage - 1))
+                        }}
+                  >
+                        {currentPage > 1 && currentPage - 1}
+                  </StyledPrevNextButtonPage>
+
+                  {pages.slice(currentPage - 1, currentPage).map((pn) => (
                         <StyledPage
                               $active={currentPage === pn}
                               onClick={() => {
@@ -37,7 +38,15 @@ export const Pagination: FC<PaginationType> = ({ usersPage }) => {
                               {pn}
                         </StyledPage>
                   ))}
-                  {/*<div>next</div>*/}
+                  <StyledPrevNextButtonPage
+                        $active={false}
+                        $visibility={currentPage >= 1}
+                        onClick={() => {
+                              dispatch(setCurrentPage(currentPage + 1))
+                        }}
+                  >
+                        {currentPage >= 1 && currentPage + 1}
+                  </StyledPrevNextButtonPage>
             </StyledPagination>
       )
 }
@@ -54,15 +63,34 @@ const StyledPagination = styled.div`
 const StyledPage = styled.div<{ $active: boolean }>`
       background: ${(props) => (props.$active ? '#7bc8fe' : 'inherit')};
       display: flex;
+      font-size: 30px;
       justify-content: center;
       align-items: center;
       margin-left: 3px;
       margin-right: 3px;
-      width: 25px;
+      width: 55px;
+      height: 55px;
+      border: 1px solid grey;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+            background: #7bc8fe;
+      }
+`
+const StyledPrevNextButtonPage = styled.button<{ $active: boolean; $visibility: boolean }>`
+      background: ${(props) => (props.$active ? '#7bc8fe' : 'inherit')};
+      opacity: ${(props) => (props.$visibility ? 1 : 0)};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 3px;
+      margin-right: 3px;
+      width: 45px;
       height: 25px;
       border: 1px solid grey;
       border-radius: 3px;
-      cursor: pointer;
+      cursor: ${(props) => (props.$visibility ? 'pointer' : '')};
 
       &:hover {
             background: #7bc8fe;
