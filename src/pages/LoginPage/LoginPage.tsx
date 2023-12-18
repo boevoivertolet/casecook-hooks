@@ -9,6 +9,7 @@ export const LoginPage = () => {
       return (
             <div
                   style={{
+                        zIndex: 1000,
                         position: 'fixed',
                         top: '0',
                         left: '0',

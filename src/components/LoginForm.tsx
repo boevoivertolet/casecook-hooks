@@ -17,7 +17,6 @@ export const LoginForm = () => {
       return (
             <div
                   style={{
-                        zIndex: '10000',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
