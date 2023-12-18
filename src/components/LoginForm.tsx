@@ -44,6 +44,7 @@ export const LoginForm = () => {
                                     <label htmlFor='email'>
                                           Email:
                                           <Field
+                                                placeholder={'free@samuraijs.com'}
                                                 type={'email'}
                                                 id='email'
                                                 name='email'
@@ -55,6 +56,7 @@ export const LoginForm = () => {
                                     <label htmlFor='password'>
                                           Password:
                                           <Field
+                                                placeholder={'free'}
                                                 type={'password'}
                                                 id='password'
                                                 name='password'

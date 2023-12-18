@@ -20,6 +20,7 @@
 }
 
 .content {
+
     background-color: rgb(80, 133, 250);
     grid-area: 2 / 2 / 2 / 3;
 }

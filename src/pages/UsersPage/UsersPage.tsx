@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/store'
 import { UserCard } from './UserCard/UserCard'
 import { UserItemType, requestUsers } from './usersPageReducer'
@@ -39,6 +39,7 @@ export type UsersPageType = {
 const StyledUsersPage = styled.div`
       width: 100%;
       height: 740px;
+
       //border: 15px solid inherit;
       overflow: auto;
       display: flex;
