@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/casecook-hooks/static/css/main.f6343bdd.css",
-    "main.js": "/casecook-hooks/static/js/main.eabdad55.js",
+    "main.css": "/casecook-hooks/static/css/main.3b215890.css",
+    "main.js": "/casecook-hooks/static/js/main.232f4067.js",
     "static/js/787.def68d46.chunk.js": "/casecook-hooks/static/js/787.def68d46.chunk.js",
     "static/media/alt-photo.png": "/casecook-hooks/static/media/alt-photo.a6143582309785dca610.png",
     "index.html": "/casecook-hooks/index.html",
-    "main.f6343bdd.css.map": "/casecook-hooks/static/css/main.f6343bdd.css.map",
-    "main.eabdad55.js.map": "/casecook-hooks/static/js/main.eabdad55.js.map",
+    "main.3b215890.css.map": "/casecook-hooks/static/css/main.3b215890.css.map",
+    "main.232f4067.js.map": "/casecook-hooks/static/js/main.232f4067.js.map",
     "787.def68d46.chunk.js.map": "/casecook-hooks/static/js/787.def68d46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f6343bdd.css",
-    "static/js/main.eabdad55.js"
+    "static/css/main.3b215890.css",
+    "static/js/main.232f4067.js"
   ]
 }
