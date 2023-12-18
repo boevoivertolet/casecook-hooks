@@ -4,6 +4,7 @@ import { UserCard } from './UserCard/UserCard'
 import { UserItemType, requestUsers } from './usersPageReducer'
 import { Navigate } from 'react-router-dom'
 import { Pagination } from '../../components/Pagination'
+import styled from 'styled-components'
 
 export function UsersPage() {
       const usersPage = useAppSelector<UsersPageType>((state) => state.usersPage)
@@ -18,12 +19,12 @@ export function UsersPage() {
 
       if (!isAuth) return <Navigate to={'/loginPage'} />
       return (
-            <div>
+            <StyledUsersPage>
                   <Pagination usersPage={usersPage} />
                   {usersPage.items.map((user) => (
                         <UserCard key={user.id} user={user} />
                   ))}
-            </div>
+            </StyledUsersPage>
       )
 }
 
@@ -35,3 +36,13 @@ export type UsersPageType = {
       currentPage: number
       followingInProgress: Array<string>
 }
+const StyledUsersPage = styled.div`
+      width: 100%;
+      height: 740px;
+      //border: 15px solid inherit;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+`

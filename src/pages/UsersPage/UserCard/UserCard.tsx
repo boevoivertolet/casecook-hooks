@@ -7,7 +7,6 @@ import styled from 'styled-components'
 
 export const UserCard: FC<UserCardType> = ({ user }) => {
       const dispatch = useAppDispatch()
-      const isFetching = useAppSelector<boolean>((state) => state.app.isFetching)
       const followingInProgress = useAppSelector<string[]>((state) => state.usersPage.followingInProgress)
       const unFollowHandler = () => {
             dispatch(unFollow(user.id))
@@ -22,8 +21,8 @@ export const UserCard: FC<UserCardType> = ({ user }) => {
             <StyledUserCard>
                   <NavLink to={`/profilePage/${user.id}`}>
                         <div>
-                              <img
-                                    style={{ width: '80px' }}
+                              <AvaStyle
+                                    $followed={user.followed}
                                     src={user.photos.small ? user.photos.large : userPhoto}
                                     alt='userPhoto'
                               />
@@ -60,4 +59,11 @@ const Button = styled.button`
       margin-top: auto;
       width: 80px;
       height: 30px;
+`
+const AvaStyle = styled.img<{ $followed: boolean }>`
+      position: relative;
+      box-sizing: border-box;
+      border-radius: ${(props) => (props.$followed ? '50%' : '50%')};
+      border: ${(props) => (props.$followed ? '2px solid green' : '')};
+      width: 80px;
 `

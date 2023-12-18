@@ -6,7 +6,7 @@ export function Nav() {
       const userId = useAppSelector<number | null>((state) => state.auth.data.id)
 
       return (
-            <div>
+            <div className={s.nav}>
                   <div>
                         <NavLink className={s.navLink} to={`/profilePage/${userId}`}>
                               My profile

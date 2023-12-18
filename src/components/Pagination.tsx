@@ -56,6 +56,9 @@ type PaginationType = {
 }
 
 const StyledPagination = styled.div`
+      position: fixed;
+      top: 85%;
+      left: 50%;
       justify-content: center;
       align-items: center;
       display: flex;
