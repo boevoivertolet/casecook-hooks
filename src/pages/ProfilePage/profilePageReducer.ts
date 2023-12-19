@@ -5,6 +5,7 @@ import { setIsFetchingAC } from '../../app/appReducer'
 let initialState: InitialProfilePageType = {
       userProfile: null,
       status: '',
+      posts: [],
 }
 
 export const profilePageReducer = (
@@ -22,6 +23,11 @@ export const profilePageReducer = (
                         ...state,
                         status: action.status,
                   }
+            case 'samurai-network/profile/ADD-POST':
+                  return {
+                        ...state,
+                        posts: [...state.posts, action.post],
+                  }
             default:
                   return state
       }
@@ -31,6 +37,7 @@ export const profilePageReducer = (
 const setUserProfile = (userProfile: IUserProfile) =>
       ({ type: 'samurai-network/profile/SET-USER-PROFILE', userProfile }) as const //Action Create
 const setStatusProfile = (status: string) => ({ type: 'samurai-network/profile/SET-STATUS', status }) as const //Action Create
+export const addProfilePost = (post: string) => ({ type: 'samurai-network/profile/ADD-POST', post }) as const //Action Create
 
 // Thunk Creators
 
@@ -87,6 +94,10 @@ export interface IUserProfile {
 export type InitialProfilePageType = {
       userProfile: IUserProfile | null
       status: string
+      posts: string[]
 }
 
-export type ProfilePageActionType = ReturnType<typeof setUserProfile> | ReturnType<typeof setStatusProfile>
+export type ProfilePageActionType =
+      | ReturnType<typeof setUserProfile>
+      | ReturnType<typeof setStatusProfile>
+      | ReturnType<typeof addProfilePost>

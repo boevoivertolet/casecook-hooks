@@ -15,4 +15,11 @@ export const validation = {
             }
             return error
       },
+      validateMessage(value: string) {
+            let error
+            if (!value) {
+                  error = 'Нельзя отправить пустое сообщение'
+            }
+            return error
+      },
 }

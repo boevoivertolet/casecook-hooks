@@ -39,7 +39,7 @@ export const ProfilePage = () => {
                         <AddPostForm />
                   </div>
                   <div>
-                        <UserProfilePosts />
+                        <UserProfilePosts posts={profilePage.posts} />
                   </div>
             </div>
       )
@@ -48,4 +48,5 @@ export const ProfilePage = () => {
 type ProfilePageType = {
       userProfile: IUserProfile | null
       status: string
+      posts: string[]
 }
