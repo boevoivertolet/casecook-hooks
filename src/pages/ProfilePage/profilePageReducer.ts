@@ -26,7 +26,7 @@ export const profilePageReducer = (
             case 'samurai-network/profile/ADD-POST':
                   return {
                         ...state,
-                        posts: [...state.posts, action.post],
+                        posts: [action.post, ...state.posts],
                   }
             default:
                   return state

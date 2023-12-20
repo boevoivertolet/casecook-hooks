@@ -3,10 +3,12 @@ import AltPhoto from '../../../image/alt-photo.png'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { Link } from 'react-router-dom'
+import { AuthUserType } from '../../../app/authReducer'
 
 export const UserProfile: React.FC<UserProfileType> = (props) => {
       const dispatch = useAppDispatch()
-      const id = useAppSelector<number | null>((state) => state.auth.data.id)
+      const user = useAppSelector<AuthUserType>((state) => state.auth.data)
+      // const id = useAppSelector<number | null>((state) => state.auth.data.id)
       const { userProfile, status, changeButtonVue, ...restProps } = props
       const [userStatus, setUserStatus] = useState<string>('')
       const [editMode, setEditMode] = useState<boolean>(false)
@@ -43,7 +45,7 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
                         ) : (
                               <div>{userStatus}</div>
                         )}
-                        {userProfile?.userId === id && (
+                        {userProfile?.userId === user.id && (
                               <button
                                     onClick={() => {
                                           setEditMode(true)

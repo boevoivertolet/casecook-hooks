@@ -11,12 +11,13 @@ export const ProfilePage = () => {
       const { userId } = useParams()
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
+      // const authId = useAppSelector<number | null>((state) => state.auth.data.id)
       const isFetching = useAppSelector<boolean>((state) => state.app.isFetching)
 
       useEffect(() => {
             if (userId) {
-                  dispatch(getUserProfile(Number(userId))) //  hard code
-                  dispatch(getStatusProfile(Number(userId))) // hard code
+                  dispatch(getUserProfile(Number(userId)))
+                  dispatch(getStatusProfile(Number(userId)))
             }
       }, [userId])
 

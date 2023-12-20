@@ -20,18 +20,17 @@ export const UserCard: FC<UserCardType> = ({ user }) => {
       return (
             <StyledUserCard>
                   <NavLink to={`/profilePage/${user.id}`}>
-                        <div>
+                        <div style={{ textAlign: 'center' }}>
                               <AvaStyle
                                     $followed={user.followed}
                                     src={user.photos.small ? user.photos.large : userPhoto}
                                     alt='userPhoto'
                               />
+                              <div>{user.name}</div>
                         </div>
-
-                        <div>{user.name}</div>
                   </NavLink>
 
-                  <div>{user.status ? user.status : ''}</div>
+                  <StatusBlock>{user.status ? user.status : ''}</StatusBlock>
 
                   {user.followed ? (
                         <Button disabled={followingInProgress.some((id) => id === user.id)} onClick={unFollowHandler}>
@@ -50,20 +49,39 @@ type UserCardType = {
 }
 
 const StyledUserCard = styled.div`
-      margin: 20px;
+      backdrop-filter: blur(40px);
+      background: rgba(255, 255, 255, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 2px;
       border: 1px solid black;
       width: 360px;
-      height: 200px;
+      height: 400px;
+
+      & > a {
+            color: black;
+            text-decoration: none;
+      }
 `
 const Button = styled.button`
-      margin-top: auto;
       width: 80px;
-      height: 30px;
+      height: 25px;
+      margin: 0;
 `
 const AvaStyle = styled.img<{ $followed: boolean }>`
       position: relative;
       box-sizing: border-box;
       border-radius: ${(props) => (props.$followed ? '50%' : '50%')};
-      border: ${(props) => (props.$followed ? '2px solid green' : '')};
-      width: 80px;
+      border: ${(props) => (props.$followed ? '5px solid gold' : '')};
+      width: 180px;
+`
+const StatusBlock = styled.div`
+      height: 100px;
+      margin: 5px;
+      padding: 2px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
 `

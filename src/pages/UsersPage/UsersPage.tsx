@@ -36,11 +36,10 @@ export type UsersPageType = {
       currentPage: number
       followingInProgress: Array<string>
 }
+
 const StyledUsersPage = styled.div`
       width: 100%;
       height: 740px;
-
-      //border: 15px solid inherit;
       overflow: auto;
       display: flex;
       justify-content: center;
