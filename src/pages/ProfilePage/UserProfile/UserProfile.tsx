@@ -29,7 +29,7 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
                   <div>
                         <img style={{ width: '150px', height: '150px' }} src={userPhoto} alt='userPhoto' />
                   </div>
-                  <div>{userProfile?.fullName}</div>
+                  <div style={{ fontSize: '30px' }}>{userProfile?.fullName}</div>
                   <div>
                         {editMode ? (
                               <input
@@ -43,7 +43,7 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
                                     type='text'
                               />
                         ) : (
-                              <div>{userStatus}</div>
+                              <div>{userStatus ? userStatus : 'no status yet'}</div>
                         )}
                         {userProfile?.userId === user.id && (
                               <button
@@ -58,7 +58,6 @@ export const UserProfile: React.FC<UserProfileType> = (props) => {
                   <div>{userProfile?.lookingForAJob}</div>
                   <div>{userProfile?.lookingForAJobDescription}</div>
                   <div>
-                        contacts:
                         <ul>
                               {userProfile?.contacts.vk && (
                                     <li>

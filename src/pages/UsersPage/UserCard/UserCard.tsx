@@ -8,6 +8,7 @@ import styled from 'styled-components'
 export const UserCard: FC<UserCardType> = ({ user }) => {
       const dispatch = useAppDispatch()
       const followingInProgress = useAppSelector<string[]>((state) => state.usersPage.followingInProgress)
+
       const unFollowHandler = () => {
             dispatch(unFollow(user.id))
             dispatch(setIsFollowingProgress(true, user.id))
@@ -30,7 +31,7 @@ export const UserCard: FC<UserCardType> = ({ user }) => {
                         </div>
                   </NavLink>
 
-                  <StatusBlock>{user.status ? user.status : ''}</StatusBlock>
+                  <StatusBlock>{user.status ? user.status : 'no status yet =('}</StatusBlock>
 
                   {user.followed ? (
                         <Button disabled={followingInProgress.some((id) => id === user.id)} onClick={unFollowHandler}>

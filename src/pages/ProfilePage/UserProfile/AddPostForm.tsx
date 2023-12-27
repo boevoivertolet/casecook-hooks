@@ -21,8 +21,6 @@ export const AddPostForm = () => {
                               console.log(values)
 
                               setTimeout(() => {
-                                    // dispatch(login(values))
-                                    // console.log(values.message)
                                     dispatch(addProfilePost(values.message))
                                     resetForm()
                                     setSubmitting(false)
@@ -31,9 +29,9 @@ export const AddPostForm = () => {
                   >
                         {({ errors, touched }) => (
                               <Form className={s.form}>
-                                    <label htmlFor='email'>
-                                          your message
+                                    <label>
                                           <Field
+                                                placeholder={'Write a message...'}
                                                 type={'text'}
                                                 id='message'
                                                 name='message'

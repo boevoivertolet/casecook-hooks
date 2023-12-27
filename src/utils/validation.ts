@@ -17,7 +17,7 @@ export const validation = {
       },
       validateMessage(value: string) {
             let error
-            if (!value) {
+            if (!value.trim()) {
                   error = 'Нельзя отправить пустое сообщение'
             }
             return error

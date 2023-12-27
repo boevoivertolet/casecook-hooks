@@ -53,7 +53,7 @@ export const getStatusProfile = (userId: number) => (dispatch: Dispatch) => {
       profileAPI.getStatus(userId).then((status) => {
             dispatch(setIsFetchingAC(false))
             if (status === null) {
-                  dispatch(setStatusProfile('no status'))
+                  dispatch(setStatusProfile('no status yet =('))
             } else {
                   dispatch(setStatusProfile(status))
             }

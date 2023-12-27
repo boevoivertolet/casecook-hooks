@@ -1,5 +1,5 @@
-import { getAuthUserData } from './authReducer'
 import { Dispatch } from 'redux'
+import { getAuthUserData } from './authReducer'
 
 let initialState: InitialAppStateType = {
       isFetching: false,

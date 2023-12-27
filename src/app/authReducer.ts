@@ -44,7 +44,6 @@ export const getAuthUserData =
       (): ThunkAction<void, InitialAuthStateType, unknown, AuthActionType> => (dispatch: Dispatch) => {
             // dispatch(setIsFetchingAC(true))
             return authAPI.getMe().then((response) => {
-                  console.log(response)
                   if (response.resultCode === 0) {
                         let { id, login, email } = response.data
                         dispatch(setAuthUserDataAC(id, email, login, true))

@@ -1,23 +1,25 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { ErrorPage } from '../../pages/ErrorPage/ErrorPage'
-import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
-import { NewsPage } from '../../pages/NewsPage/NewsPage'
 import { MessengerPage } from '../../pages/MessengerPage/MessengerPage'
+import { NewsPage } from '../../pages/NewsPage/NewsPage'
+import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
 
+import { useAppSelector } from '../../app/store'
+import { LoginPage } from '../../pages/LoginPage/LoginPage'
 import { MusicPage } from '../../pages/MusicPage/MusicPage'
 import { SettingsPage } from '../../pages/SettingsPage/SettingsPage'
 import { UsersPage } from '../../pages/UsersPage/UsersPage'
-import { LoginPage } from '../../pages/LoginPage/LoginPage'
-import { useAppSelector } from '../../app/store'
 
 export function Content() {
-      const userId = useAppSelector<number | null>((state) => state.auth.data.id)
+      // const userId = useAppSelector<number | null>((state) => state.auth.data.id)
+      const authId = useAppSelector<number | null>((state) => state.auth.data.id)
+
       return (
             <div>
                   <Routes>
                         <Route path={'/'} element={<Navigate to={`/profilePage`} />} />
-                        <Route path={'/:id'} element={<Navigate to={`/profilePage/${userId}`} />} />
+                        <Route path={'/:id'} element={<Navigate to={`/profilePage/${authId}`} />} />
 
                         <Route path={`/profilePage/:userId`} element={<ProfilePage />} />
                         <Route path={'/loginPage'} element={<LoginPage />} />

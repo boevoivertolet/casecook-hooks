@@ -2,10 +2,8 @@ import { useEffect } from 'react'
 import { Content } from '../components/content/Content'
 import { Nav } from '../components/nav/Nav'
 import s from './Casecook.module.css'
-
-import { useAppDispatch, useAppSelector } from './store'
-import { initializeApp, setModalLogoutAC } from './appReducer'
-import { logout } from './authReducer'
+import { useAppDispatch } from './store'
+import { initializeApp } from './appReducer'
 import { ModalLogout } from '../components/ModalLogout'
 
 export function Casecook() {
@@ -13,7 +11,7 @@ export function Casecook() {
 
       useEffect(() => {
             dispatch(initializeApp())
-      }, [])
+      }, [dispatch])
 
       return (
             <div className={s.wrapper}>
