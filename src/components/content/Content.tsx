@@ -12,7 +12,6 @@ import { SettingsPage } from '../../pages/SettingsPage/SettingsPage'
 import { UsersPage } from '../../pages/UsersPage/UsersPage'
 
 export function Content() {
-      // const userId = useAppSelector<number | null>((state) => state.auth.data.id)
       const authId = useAppSelector<number | null>((state) => state.auth.data.id)
 
       return (

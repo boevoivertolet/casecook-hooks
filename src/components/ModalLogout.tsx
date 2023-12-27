@@ -1,18 +1,24 @@
-import { useAppDispatch, useAppSelector } from '../app/store'
-import { setModalLogoutAC } from '../app/appReducer'
+import { useState } from 'react'
 import { logout } from '../app/authReducer'
+import { useAppDispatch } from '../app/store'
 
 export const ModalLogout = () => {
       const dispatch = useAppDispatch()
-      const modal = useAppSelector<boolean>((state) => state.app.modalLogout)
-      const onClickModalHandle = () => dispatch(setModalLogoutAC())
+      const [modalVue, setModalVue] = useState<boolean>(false)
+      // const modal = useAppSelector<boolean>((state) => state.app.modalLogout)
+      // const onClickModalHandle = () => dispatch(setModalLogoutAC())
+      // const onClickHandle = () => {
+      //       dispatch(logout())
+      //       dispatch(setModalLogoutAC())
+      // }
+      const onClickModalHandle = () => setModalVue((prev) => !prev)
       const onClickHandle = () => {
             dispatch(logout())
-            dispatch(setModalLogoutAC())
+            setModalVue(false)
       }
       return (
             <div>
-                  {modal && (
+                  {modalVue && (
                         <div
                               style={{
                                     position: 'absolute',
@@ -38,7 +44,7 @@ export const ModalLogout = () => {
                               </div>
                         </div>
                   )}
-                  <button disabled={modal} onClick={onClickModalHandle}>
+                  <button disabled={modalVue} onClick={onClickModalHandle}>
                         logout
                   </button>
             </div>
