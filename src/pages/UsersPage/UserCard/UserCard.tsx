@@ -1,9 +1,10 @@
-import { follow, setIsFollowingProgress, unFollow, UserItemType } from '../usersPageReducer'
-import userPhoto from '../../../image/alt-photo.png'
-import { NavLink } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { FC } from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { useAppDispatch, useAppSelector } from '../../../app/store'
+import userPhoto from '../../../image/alt-photo.png'
+
+import { follow, unFollow, UserItemType } from '../usersPageReducer'
 
 export const UserCard: FC<UserCardType> = ({ user }) => {
       const dispatch = useAppDispatch()
@@ -11,11 +12,9 @@ export const UserCard: FC<UserCardType> = ({ user }) => {
 
       const unFollowHandler = () => {
             dispatch(unFollow(user.id))
-            dispatch(setIsFollowingProgress(true, user.id))
       }
       const followHandler = () => {
             dispatch(follow(user.id))
-            dispatch(setIsFollowingProgress(true, user.id))
       }
 
       return (
@@ -59,7 +58,7 @@ const StyledUserCard = styled.div`
       margin: 2px;
       border: 1px solid black;
       width: 360px;
-      height: 400px;
+      height: 350px;
 
       & > a {
             color: black;
@@ -72,6 +71,7 @@ const Button = styled.button`
       margin: 0;
 `
 const AvaStyle = styled.img<{ $followed: boolean }>`
+      margin: 15px;
       position: relative;
       box-sizing: border-box;
       border-radius: ${(props) => (props.$followed ? '50%' : '50%')};

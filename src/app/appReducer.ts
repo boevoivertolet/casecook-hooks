@@ -42,8 +42,8 @@ export const initializeApp = () => (dispatch: Dispatch<any>) => {
       let promise = dispatch(getAuthUserData())
       Promise.all([promise]).then(() => {
             dispatch(setInitializedAC())
-            dispatch(setIsFetchingAC(false))
       })
+      dispatch(setIsFetchingAC(false))
 }
 
 //Types

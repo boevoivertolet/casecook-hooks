@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/store'
+import { Loader } from '../../components/Loader/Loader'
 import { AddPostForm } from './UserProfile/AddPostForm'
 import { UserProfile } from './UserProfile/UserProfile'
 import { UserProfilePosts } from './UserProfile/UserProfilePosts'
@@ -9,6 +10,7 @@ import { IUserProfile, getStatusProfile, getUserProfile } from './profilePageRed
 export const ProfilePage = () => {
       const profilePage = useAppSelector<ProfilePageType>((state) => state.profilePage)
       const { userId } = useParams()
+      // const userId = useAppSelector<number | null>((state) => state.auth.data.id)
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
 
@@ -24,25 +26,27 @@ export const ProfilePage = () => {
       if (!isAuth) return <Navigate to={'/loginPage'} />
 
       return (
-            <div>
-                  <div>
-                        {isFetching ? (
-                              <h1>Loading...</h1>
-                        ) : (
-                              <UserProfile
-                                    changeButtonVue
-                                    userProfile={profilePage.userProfile}
-                                    status={profilePage.status}
-                              />
-                        )}
-                  </div>
-                  <div>
-                        <AddPostForm />
-                  </div>
-                  <div>
-                        <UserProfilePosts profile={profilePage} />
-                  </div>
-            </div>
+            <>
+                  {isFetching ? (
+                        <Loader />
+                  ) : (
+                        <div>
+                              <div>
+                                    <UserProfile
+                                          changeButtonVue
+                                          userProfile={profilePage.userProfile}
+                                          status={profilePage.status}
+                                    />
+                              </div>
+                              <div>
+                                    <AddPostForm />
+                              </div>
+                              <div>
+                                    <UserProfilePosts profile={profilePage} />
+                              </div>
+                        </div>
+                  )}
+            </>
       )
 }
 

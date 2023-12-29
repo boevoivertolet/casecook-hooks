@@ -2,12 +2,14 @@ import { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../app/store'
+import { Loader } from '../../components/Loader/Loader'
 import { Pagination } from '../../components/Pagination'
 import { UserCard } from './UserCard/UserCard'
 import { UserItemType, requestUsers } from './usersPageReducer'
 
 export function UsersPage() {
       const usersPage = useAppSelector<UsersPageType>((state) => state.usersPage)
+      const isFetching = useAppSelector<boolean>((state) => state.app.isFetching)
 
       const dispatch = useAppDispatch()
       const isAuth = useAppSelector<boolean>((state) => state.auth.data.isAuth)
@@ -20,12 +22,16 @@ export function UsersPage() {
 
       if (!isAuth) return <Navigate to={'/loginPage'} />
       return (
-            <StyledUsersPage>
-                  <Pagination usersPage={usersPage} />
-                  {usersPage.items.map((user) => (
-                        <UserCard key={user.id} user={user} />
-                  ))}
-            </StyledUsersPage>
+            <>
+                  <StyledUsersPage>
+                        <Pagination usersPage={usersPage} />
+                        {isFetching ? (
+                              <Loader />
+                        ) : (
+                              usersPage.items.map((user) => <UserCard key={user.id} user={user} />)
+                        )}
+                  </StyledUsersPage>
+            </>
       )
 }
 

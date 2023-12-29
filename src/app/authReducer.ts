@@ -2,6 +2,7 @@ import { Dispatch } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { authAPI } from '../api/api'
 import { LoginFormDataType } from '../components/LoginForm'
+import { setIsFetchingAC } from './appReducer'
 
 let initialState: InitialAuthStateType = {
       data: {
@@ -42,12 +43,12 @@ const setAuthUserDataAC = (id: number | null, email: string | null, login: strin
 
 export const getAuthUserData =
       (): ThunkAction<void, InitialAuthStateType, unknown, AuthActionType> => (dispatch: Dispatch) => {
-            // dispatch(setIsFetchingAC(true))
+            dispatch(setIsFetchingAC(true))
             return authAPI.getMe().then((response) => {
                   if (response.resultCode === 0) {
                         let { id, login, email } = response.data
                         dispatch(setAuthUserDataAC(id, email, login, true))
-                        // dispatch(setIsFetchingAC(false))
+                        dispatch(setIsFetchingAC(false))
                   }
             })
       }
@@ -72,12 +73,11 @@ export const login =
       }
 
 export const logout = () => (dispatch: Dispatch<any>) => {
-      // dispatch(setIsFetchingAC(true))
+      dispatch(setIsFetchingAC(true))
       authAPI.logout().then((data) => {
-            console.log(data)
             if (data.resultCode === 0) {
                   dispatch(setAuthUserDataAC(null, null, null, false))
-                  // dispatch(setIsFetchingAC(false))
+                  dispatch(setIsFetchingAC(false))
             }
       })
 }

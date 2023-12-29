@@ -83,27 +83,27 @@ export const requestUsers = (page: number, pageSize: number) => {
 }
 export const follow = (userId: string) => {
       return (dispatch: Dispatch) => {
-            // dispatch(setIsFetchingAC(true))
+            dispatch(setIsFetchingAC(true))
             dispatch(setIsFollowingProgress(true, userId))
             usersAPI.postFollow(userId).then((data) => {
                   if (data.resultCode === 0) {
                         dispatch(acceptFollow(userId))
+                        dispatch(setIsFollowingProgress(false, userId))
+                        dispatch(setIsFetchingAC(false))
                   }
-                  // dispatch(setIsFetchingAC(false))
-                  dispatch(setIsFollowingProgress(false, userId))
             })
       }
 }
 export const unFollow = (userId: string) => {
       return (dispatch: Dispatch) => {
-            // dispatch(setIsFetchingAC(true))
+            dispatch(setIsFetchingAC(true))
             dispatch(setIsFollowingProgress(true, userId))
             usersAPI.deleteFollow(userId).then((data) => {
                   if (data.resultCode === 0) {
                         dispatch(acceptUnfollow(userId))
+                        dispatch(setIsFollowingProgress(false, userId))
+                        dispatch(setIsFetchingAC(false))
                   }
-                  // dispatch(setIsFetchingAC(false))
-                  dispatch(setIsFollowingProgress(false, userId))
             })
       }
 }
